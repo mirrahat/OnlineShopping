@@ -1,0 +1,36 @@
+﻿@using OnlineShoppingStore.Models
+@{
+    ViewBag.Title = "Wishlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Session["wishlist"] != null)
+{
+    foreach (var item in (List<wishlist>)Session["wishlist"])
+    {
+<div class="col-md-3 col-sm-6 col-xs-6">
+    <div class="product product-single">
+        <div class="product-thumb">
+            <div class="product-label">
+                <span>@item.ProductWishlistTable.Rows[0][12]</span>
+                <span class="sale">-@item.ProductWishlistTable.Rows[0][11]</span>
+            </div>
+            <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+            <img src="~/ProductImg//@item.ProductWishlistTable.Rows[0][8]" alt="">
+        </div>
+        <div class="product-body">
+            <h3 class="product-price">@item.ProductWishlistTable.Rows[0][6]<del class="product-old-price">@item.ProductWishlistTable.Rows[0][7]</del></h3>
+            
+            <h2 class="product-name"><a href="#">@item.ProductWishlistTable.Rows[0][3]</a></h2>
+            <div class="product-btns">
+                <button class="main-btn icon-btn" onclick="location.href='@Url.Action("MyWishlist", "MyFeatures")?id='+@(item.ProductWishlistTable.Rows[0][0])"><i class="fa fa-heart"></i></button>
+                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(item.ProductWishlistTable.Rows[0][0]) ">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+    }
+
+}

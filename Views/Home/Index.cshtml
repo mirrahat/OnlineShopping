@@ -1,0 +1,443 @@
+﻿@using OnlineShoppingStore.Models
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="~/Content/jquery.wm-zoom-1.0.min.css" />
+
+
+<!---nav menu-->
+<!-----Nav menu-->
+<!-- section -->
+
+
+<div id="home">
+    <!-- container -->
+    <div class="container">
+        <!-- home wrap -->
+        <div class="home-wrap">
+            <!-- home slick -->
+            <div id="home-slick">
+                <!-- banner -->
+                <div class="banner banner-1">
+                    <img src="../img/banner01.jpg" alt="">
+                    <div class="banner-caption text-center">
+                        <h1>Bags sale</h1>
+                        <h3 class="white-color font-weak">Up to 50% Discount</h3>
+                        <button class="primary-btn">Shop Now</button>
+                    </div>
+                </div>
+                <!-- /banner -->
+                <!-- banner -->
+                <a href="~/ProductViewPage/HotDeal">
+                    <div class="banner banner-1">
+                        <img src="../img/banner02.jpg" alt="">
+                        <div class="banner-caption">
+                            <h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
+
+                        </div>
+                    </div>
+                </a>
+                <!-- /banner -->
+                <!-- banner -->
+                <div class="banner banner-1">
+                    <img src="../img/banner03.jpg" alt="">
+                    <div class="banner-caption">
+                        <h1 class="white-color">New Product <span>Collection</span></h1>
+                        <button class="primary-btn">Shop Now</button>
+                    </div>
+                </div>
+                <!-- /banner -->
+            </div>
+            <!-- /home slick -->
+        </div>
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- banner -->
+            <div class="col-md-4 col-sm-6">
+                <a class="banner banner-1" href="../Home/CategoryByView/1">
+                    <img src="../img/banner10.jpg" alt="">
+                    <div class="banner-caption text-center">
+                        <h2 class="white-color">Men's COLLECTION</h2>
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+            <!-- banner -->
+            <div class="col-md-4 col-sm-6">
+                <a class="banner banner-1" href="../Home/CategoryByView/10">
+                    <img src="../img/banner11.jpg" alt="">
+                    <div class="banner-caption text-center">
+                        <h2 class="white-color">Women's COLLECTION</h2>
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+            <!-- banner -->
+            <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
+                <a class="banner banner-1" href="../Home/CategoryByView/11">
+                    <img src="../img/banner12.jpg" alt="">
+                    <div class="banner-caption text-center">
+                        <h2 class="white-color">Kiddo's COLLECTION</h2>
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- section-title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Accessories</h2>
+                    <div class="pull-right">
+                        <div class="product-slick-dots-1 custom-dots"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /section-title -->
+            <!-- banner -->
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <div class="banner banner-2">
+                    <img src="../img/banner14.jpg" alt="">
+                    <div class="banner-caption">
+                        <h2 class="white-color">NEW<br>COLLECTION</h2>
+                        <button class="primary-btn">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /banner -->
+            <!-- Product Slick -->
+            <div class="col-md-9 col-sm-6 col-xs-6">
+                <div class="row">
+                    <div id="product-slick-1" class="product-slick">
+                        <!-- Product Single -->
+                        @{
+                            int l = 0;
+                            int p = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            if (item.AccessoriesTable.Rows.Count < 5)
+                            {
+                                
+
+                                    <div class="product product-single">
+                                        <div class="product-thumb">
+                                            <div class="product-label">
+                                                <span>@item.AccessoriesTable.Rows[l][12]</span>
+                                                <span class="sale">-@item.AccessoriesTable.Rows[l][11]</span>
+                                            </div>
+
+                                            <button class="main-btn quick-view" onclick="location.href='@Url.Action("ViewDetailsProduct", "ProductViewPage")?id='+@(item.AccessoriesTable.Rows[l][0]) "><i class="fa fa-search-plus"></i> Quick view</button>
+                                            <img src="~/ProductImg/@item.AccessoriesTable.Rows[l][8]" alt="">
+                                        </div>
+                                        <div class="product-body">
+                                            <h3 class="product-price">$@item.AccessoriesTable.Rows[l][6]<del class="product-old-price">$@item.AccessoriesTable.Rows[l][7]</del></h3>
+
+                                            <h2 class="product-name"><a href="#">@item.AccessoriesTable.Rows[l][3]</a></h2>
+                                            <div class="product-btns">
+                                                <button class="main-btn icon-btn" onclick="location.href='@Url.Action("MyWishlist", "MyFeatures")?id='+@(item.AccessoriesTable.Rows[l][0])"><i class="fa fa-heart"></i></button>
+                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                                @*<a class="btn  primary-btn add-to-cart" href="/Home/AddtoCart?id=@(Model.ProductTable.Rows[l][0])"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                                *@
+                                                <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(item.AccessoriesTable.Rows[l][0]) ">Add To Cart</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                               
+                                l++;
+                            }
+                            else
+                            {
+                                p = item.AccessoriesTable.Rows.Count;
+                                for (int k = p - 1; k >= p - 4; k--)
+                                {
+
+                                    
+
+                                        <div class="product product-single">
+                                            <div class="product-thumb">
+                                                <div class="product-label">
+                                                    <span>@item.AccessoriesTable.Rows[k][12]</span>
+                                                    <span class="sale">-@item.AccessoriesTable.Rows[k][11]</span>
+                                                </div>
+
+                                                <button class="main-btn quick-view" onclick="location.href='@Url.Action("ViewDetailsProduct", "ProductViewPage")?id='+@(item.AccessoriesTable.Rows[k][0]) "><i class="fa fa-search-plus"></i> Quick view</button>
+                                                <img src="~/ProductImg/@item.AccessoriesTable.Rows[k][8]" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-price">@item.AccessoriesTable.Rows[k][6]<del class="product-old-price">@item.AccessoriesTable.Rows[k][7]</del></h3>
+
+                                                <h2 class="product-name"><a href="#">@item.AccessoriesTable.Rows[k][3]</a></h2>
+                                                <div class="product-btns">
+                                                    <button class="main-btn icon-btn" onclick="location.href='@Url.Action("MyWishlist", "MyFeatures")?id='+@(item.AccessoriesTable.Rows[k][0])"><i class="fa fa-heart"></i></button>
+                                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                                    @*<a class="btn  primary-btn add-to-cart" href="/Home/AddtoCart?id=@(item.ProductTable.Row[l][0])"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                                    *@
+                                                    <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(item.AccessoriesTable.Rows[k][0]) ">Add To Cart</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                   
+                                }
+
+
+                            }
+                            }
+
+
+                        
+                        <!-- /Product Single -->
+                        <!-- Product Single -->
+                        <!-- /Product Single -->
+                        <!-- Product Single -->
+                        <!-- /Product Single -->
+                        <!-- Product Single -->
+                        <!-- /Product Single -->
+                    </div>
+                </div>
+            </div>
+            <!-- /Product Slick -->
+        </div>
+        <!-- /row -->
+        <!-- row -->
+        
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /row -->
+<!-- row -->
+
+<!-
+<!-- /section -->
+<!-- section -->
+<div class="section section-grey">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- banner -->
+            <div class="col-md-8">
+                <a href="~/ProductViewPage/HotDeal">
+                    <div class="banner banner-1">
+                        <img src="../img/banner13.jpg" alt="">
+                        <div class="banner-caption text-center">
+                            <h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
+                            @*<button class="primary-btn">Shop Now</button>*@
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+            <!-- banner -->
+            <div class="col-md-4 col-sm-6">
+                <a class="banner banner-1" href="#">
+                    <img src="../img/banner11.jpg" alt="">
+                    <div class="banner-caption text-center">
+                        <h2 class="white-color">NEW COLLECTION</h2>
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+            <!-- banner -->
+            <div class="col-md-4 col-sm-6">
+                <a class="banner banner-1" href="#">
+                    <img src="../img/banner12.jpg" alt="">
+                    <div class="banner-caption text-center">
+                        <h2 class="white-color">NEW COLLECTION</h2>
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Latest Collections</h2>
+                </div>
+            </div>
+            <!-- section title -->
+            <!-- Product Single -->
+            @{
+                int i = 0;
+                int m = 0;
+            }
+            @foreach (var item in Model)
+            {
+                if (item.ProductTable.Rows.Count < 5)
+                {
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>@item.ProductTable.Row[i][12]</span>
+                                    <span class="sale">-@item.ProductTable.Rows[i][11]</span>
+                                </div>
+
+                                <button class="main-btn quick-view" onclick="location.href='@Url.Action("ViewDetailsProduct", "ProductViewPage")?id='+@(item.ProductTable.Rows[i][0]) "><i class="fa fa-search-plus"></i> Quick view</button>
+                                <img src="~/ProductImg/@item.ProductTable.Rows[i][8]" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">$@item.ProductTable.Rows[i][6]<del class="product-old-price">$@item.ProductTable.Rows[i][7]</del></h3>
+
+                                <h2 class="product-name"><a href="#">@item.ProductTable.Rows[i][3]</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn" onclick="location.href='@Url.Action("MyWishlist", "MyFeatures")?id='+@(item.ProductTable.Rows[i][0])"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    @*<a class="btn  primary-btn add-to-cart" href="/Home/AddtoCart?id=@(Model.ProductTable.Rows[i][0])"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                    *@
+                                    <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(item.ProductTable.Rows[i][0]) ">Add To Cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                }
+                else
+                {
+                    m = item.ProductTable.Rows.Count;
+                    for (int k = m - 1; k >= m - 4; k--)
+                    {
+
+                        <div class="col-md-3 col-sm-6 col-xs-6">
+
+                            <div class="product product-single">
+                                <div class="product-thumb">
+                                    <div class="product-label">
+                                        <span>@item.ProductTable.Rows[k][12]</span>
+                                        <span class="sale">-@item.ProductTable.Rows[k][11]</span>
+                                    </div>
+
+                                    <button class="main-btn quick-view" onclick="location.href='@Url.Action("ViewDetailsProduct", "ProductViewPage")?id='+@(item.ProductTable.Rows[k][0]) "><i class="fa fa-search-plus"></i> Quick view</button>
+                                    <img src="~/ProductImg/@item.ProductTable.Rows[k][8]" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <h3 class="product-price">@item.ProductTable.Rows[k][6]<del class="product-old-price">@item.ProductTable.Rows[k][7]</del></h3>
+
+                                    <h2 class="product-name"><a href="#">@item.ProductTable.Rows[k][3]</a></h2>
+                                    <div class="product-btns">
+                                        <button class="main-btn icon-btn" onclick="location.href='@Url.Action("MyWishlist", "MyFeatures")?id='+@(item.ProductTable.Rows[k][0])"><i class="fa fa-heart"></i></button>
+                                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                        @*<a class="btn  primary-btn add-to-cart" href="/Home/AddtoCart?id=@(item.ProductTable.Row[i][0])"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                        *@
+                                        <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(item.ProductTable.Rows[k][0]) ">Add To Cart</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                }
+
+
+            }
+
+
+
+            <!-- /Product Single -->
+            <!-- Product Single -->
+            <!-- /Product Single -->
+            <!-- Product Single -->
+            <!-- /Product Single -->
+        </div>
+        <!-- /row -->
+        <!-- row -->
+        
+        <!-- /row -->
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Picked For You</h2>
+                </div>
+            </div>
+            <!-- section title -->
+            <!-- Product Single -->
+            @{
+                int eid = 0;
+            }
+
+
+            @foreach (var item in Model)
+            {
+                for (eid = 0; eid < @item.EidProducts.Rows.Count; eid++)
+                {
+
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>@item.EidProducts.Rows[eid][12]</span>
+                                    <span class="sale">-@item.EidProducts.Rows[eid][11]</span>
+                                </div>
+
+                                <button class="main-btn quick-view" onclick="location.href='@Url.Action("ViewDetailsProduct", "ProductViewPage")?id='+@(item.EidProducts.Rows[eid][0]) "><i class="fa fa-search-plus"></i> Quick view</button>
+                                <img src="~/ProductImg/@item.EidProducts.Rows[eid][8]" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">@item.EidProducts.Rows[eid][6]<del class="product-old-price">@item.EidProducts.Rows[eid][7]</del></h3>
+
+                                <h2 class="product-name"><a href="#">@item.EidProducts.Rows[eid][3]</a></h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn" onclick="location.href='@Url.Action("MyWishlist", "MyFeatures")?id='+@(item.EidProducts.Rows[eid][0])"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    @*<a class="btn  primary-btn add-to-cart" href="/Home/AddtoCart?id=@(item.ProductTable.Row[l][0])"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                    *@
+                                    <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(item.EidProducts.Rows[eid][0]) ">Add To Cart</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                }
+            }
+            <!-- /Product Single -->
+            <!-- Product Single -->
+            
+            <!-- /Product Single -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->

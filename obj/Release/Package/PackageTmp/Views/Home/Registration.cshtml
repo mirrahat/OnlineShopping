@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_loginlayout.cshtml";
+}
+<div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w780">
+        <div class="card card-3">
+            <div class="card-heading"></div>
+            <div class="card-body">
+                <h2 class="title">Registration Info</h2>
+                @if(TempData["usernameexist"]!=null){
+                <p style="color:red;">@TempData["usernameexist"]</p>
+                }
+                <form action="../Home/regform" method="POST">
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="First Name" name="firstname" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="Last Name" name="lastname" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="UserName" name="username" required>
+                    </div>
+                   @if (TempData["lowerpassword"]!=null) {
+
+                       <p style="color:red;">@TempData["lowerpassword"]</p>
+                   }
+
+                        <div class="input-group">
+                        <input class="input--style-3" type="password" placeholder="Password " name="password" required>
+                    </div>
+                    
+
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <select required name="gender">
+                                <option value="">Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="select-dropdown"></div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input class="input--style-3" type="email" placeholder="Email" name="email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <input class="input--style-3" type="text" placeholder="Phone" name="phone" required>
+                    </div>
+                    <div class="p-t-10">
+                        <button class="btn btn--pill btn--green" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

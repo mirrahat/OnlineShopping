@@ -1,0 +1,244 @@
+﻿
+@{
+    ViewBag.Title = "CustomOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+          
+                <div class="col-md-6">
+                    @*<form id="checkout-form" class="clearfix">*@
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/4J_sNrvHfzY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-6">
+                    <div class="shiping-methods">
+                        <div class="section-title">
+                            <h4 class="title">Input Taylors' Measure</h4>
+                        </div>
+                        <div class="input-checkbox">
+                            <input type="radio" name="shipping" id="shipping-1" checked>
+                            <label for="shipping-1">Men </label>
+                            <div class="caption">
+
+                                <div class="col-md-6">
+                                    <div class="billing-details">
+                                        
+                                        <form id="checkout-form" class="clearfix" action="../Home/InsertCustomOrder">
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="usergender" value="Men" readonly>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Neck" placeholder="Neck">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Chest" placeholder="Chest">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Waist" placeholder="Waist">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Seat" placeholder="Seat">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="productslength" placeholder="Products Lenght">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Shoulder" placeholder="Shoulder">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="armlength" placeholder="Arm Length">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="tel" name="Wrist" placeholder="Wrist">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="tel" name="Hipbottomshirt" placeholder="Hip Bottom For Shirt">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="tel" name="Seat" placeholder="Seat">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="tel" name="Inseam" placeholder="Inseam">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input class="input" required type="tel" name="Hip" placeholder="Hip">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="tel" name="Sleeve" placeholder="Sleeve">
+                                            </div>
+                                            <div class="pull-right">
+                                                <button class="primary-btn">Place Order</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+<!-- Custom Order For Women-->
+
+
+
+    <div class="input-checkbox">
+    <input type="radio" name="shipping" id="shipping-1" checked>
+    <label for="shipping-1">women </label>
+    <div class="caption">
+
+        <div class="col-md-6">
+            <div class="billing-details">
+                <form id="checkout-form" class="clearfix" action="../Home/InsertCustomOrder">
+                    <div class="form-group">
+                        <input class="input" required type="text" name="usergender" value="women" readonly>
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="Neck" placeholder="Neck">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="Chest" placeholder="Chest">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="Waist" placeholder="Waist">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="Seat" placeholder="Seat">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="productslength" placeholder="Products Lenght">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="Shoulder" placeholder="Shoulder">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="text" name="armlength" placeholder="Arm Length">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="tel" name="Wrist" placeholder="Wrist">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="tel" name="Hipbottomshirt" placeholder="Hip Bottom For Shirt">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="input" required type="tel" name="Inseam" placeholder="Inseam">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="input" required type="tel" name="Hip" placeholder="Hip">
+                    </div>
+                    <div class="form-group">
+                        <input class="input" required type="tel" name="Sleeve" placeholder="Sleeve">
+                    </div>
+                    <div class="pull-right">
+                        <button class="primary-btn">Place Order</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+                        
+<!--Custom Order For Kiddo-->
+
+                        <div class="input-checkbox">
+                            <input type="radio" name="shipping" id="shipping-1" checked>
+                            <label for="shipping-1">Kiddo</label>
+                            <div class="caption">
+
+                                <div class="col-md-6">
+                                    <div class="billing-details">
+                                       
+                                        <form id="checkout-form" class="clearfix" action="../Home/InsertCustomOrder">
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="usergender"  value="Kiddo" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="cottonname" placeholder="Cotton Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Chest" placeholder="Cotton Color">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Neck" placeholder="Neck">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Chest" placeholder="Chest">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Waist" placeholder="Waist">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Seat" placeholder="Seat">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="productslength" placeholder="Products Lenght">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Shoulder" placeholder="Shoulder">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="armlength" placeholder="Arm Length">
+                                            </div>
+                                            <div class="form-group">
+                                                <input class="input" required type="text" name="Wrist" placeholder="Wrist">
+                                            </div>
+                                            <div class="pull-right">
+                                                <button class="primary-btn">Place Order</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+
+                        
+
+
+
+
+                    </div>
+
+
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+               
+           
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,127 @@
+﻿@model OnlineShoppingStore.Models.ProductViewPageModel
+@{
+    ViewBag.Title = "ViewDetailsProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!--  Product Details -->
+            <div class="product product-details clearfix">
+                @if (Model != null)
+                {
+
+                    for (int i = 0; i < Model.ProductDatatable.Rows.Count; i++)
+                    {
+                        <div class="col-md-6">
+                            <div id="product-main-view">
+                                <div class="product-view">
+                                    <img src="../ProductImg/@Model.ProductDatatable.Rows[i][8]" alt="No Image">
+                                </div>
+
+                            </div>
+                            <div id="product-view">
+                                <div class="product-view">
+                                    <img src="../ProductImg/@Model.ProductDatatable.Rows[i][8]" alt="No Image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product-body">
+                                <div class="product-label">
+                                    <span>@Model.ProductDatatable.Rows[i][12]</span>
+                                    <span class="sale">-@Model.ProductDatatable.Rows[i][11]</span>
+                                </div>
+                                <h2 class="product-name">@Model.ProductDatatable.Rows[i][3]</h2>
+                                <h3 class="product-price">@Model.ProductDatatable.Rows[i][6] <del class="product-old-price">@Model.ProductDatatable.Rows[i][7]</del></h3>
+                                <div>
+
+
+                                </div>
+                                <p><strong>Availability:</strong>@Model.ProductDatatable.Rows[i][9]</p>
+                                <p><strong>Brand:</strong>@Model.ProductDatatable.Rows[i][14]</p>
+                                <p>
+                                    @Model.ProductDatatable.Rows[i][4]
+                                </p>
+                                <div class="product-options">
+                                    <ul class="size-option">
+                                        <li><span class="text-uppercase">Size:</span></li>
+
+                                        <li><a href="#">@Model.ProductDatatable.Rows[i][13]</a></li>
+                                    </ul>
+                                    <ul class="color-option">
+                                        <li><span class="text-uppercase">Color:</span></li>
+                                        <li class=""><a href="#" >@Model.ProductDatatable.Rows[i][10]</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="product-btns">
+
+                                    <button class="main-btn" onclick="location.href='@Url.Action("AddtoCart", "Home")?id='+@(Model.ProductDatatable.Rows[i][0]) ">Add To Cart</button>
+                                    <button class="main-btn" onclick="location.href='@Url.Action("VirtualTrail", "ProductViewPage")?id='+@(Model.ProductDatatable.Rows[i][0]) ">Virtual Trial</button>
+
+                                </div>
+
+                                
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="product-tab">
+                                <ul class="tab-nav">
+                                    <li><a data-toggle="tab" href="#tab1">Details</a></li>
+                                    <li><a data-toggle="tab" href="#tab2">Say About This Product</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="tab1" class="tab-pane fade in active">
+                                        <p>
+                                            @Model.ProductDatatable.Rows[i][4]
+                                        </p>
+                                    </div>
+                                    <div id="tab2" class="tab-pane fade in">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <h4 class="text-uppercase">Write Your Review</h4>
+                                                <p>Your email address will not be published.</p>
+                                                <form class="review-form"  action="../ProductViewPage/productContact">
+                                                    <div class="form-group">
+                                                        <input class="input" type="text" name="name" required placeholder="Your Name" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="input" type="email" name="mail" required placeholder="Email Address" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <textarea class="input" name="message" required placeholder="Your review"></textarea>
+                                                    </div>
+                                                    
+                                                    <button class="primary-btn">Submit</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+                    <!-- /Product Details -->
+                </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

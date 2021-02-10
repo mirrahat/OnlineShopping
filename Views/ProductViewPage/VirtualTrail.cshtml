@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "VirtualTrail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="Row">
+        <div class="col-md-6">
+            <img src="~/Images/mymen.jpg"  height="300" width="300" />
+            <img id="viewProductImage" src="~/ProductImg/@Model.Rows[0][8]" height="300" width="300"   style="position: absolute;
+    top: 260px;
+    left: 0;
+    overflow: hidden;
+" />
+            @*<img src="~/ProductImg/@Model.Rows[0][8]" height="300" width="300" alt="Alternate Text" />*@
+        </div>
+        
+        <div class="col-md-6">
+            <div id="itsme">
+                <img src="~/ProductImg/@Model.Rows[0][8]" height="300" width="300" />
+                
+            </div>
+            <button onclick="move()">Click Me</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const pimage = document.getElementById("viewProductImage");
+        pimage.src = "/Images/mymen.jpg";
+        pimage.style.visibility = 'hidden'
+        function move() {
+            pimage.style.visibility = 'visible'
+            pimage.src = "/ProductImg/@Model.Rows[0][8]";
+
+    }
+    </script>
+</div>

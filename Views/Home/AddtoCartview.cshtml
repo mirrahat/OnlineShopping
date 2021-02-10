@@ -1,0 +1,55 @@
+﻿@using OnlineShoppingStore.Models
+@{
+    ViewBag.Title = "AddtoCartview";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["cart"] == null)
+{
+    <div class="alert alert-danger">
+        <strong>No product added to cart!</strong>
+    </div>
+
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr><th>Product Image</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Line Total</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int Total = 0;
+            }
+            @foreach (item item in (List<item>)Session["cart"])
+            {
+
+                int productPrice = Convert.ToInt32(item.ProductCartTable.Rows[0][6]);
+                int lineTotal = Convert.ToInt32(item.Quantity * productPrice);
+                Total = Convert.ToInt32(@Total + lineTotal);
+                <tr> <td><img src="~/ProductImg/@item.ProductCartTable.Rows[0][8]" height="100" width="100" /></td>
+                    <td>@item.ProductCartTable.Rows[0][3]</td>
+                    <td>@productPrice</td>
+                    <td>@item.Quantity</td>
+                    <td>@lineTotal</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="5" class="text-right"><b>Total: @Total</b></td>
+            </tr>
+        </tbody>
+    </table>
+   
+
+
+    <div style="text-align:center;"> <a class="btn btn-success" href="../Home/Addtocartedit "> Edit Cart </a></div> 
+
+}
+   

@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "AdminCustomOrder";
+    Layout = "~/Views/Shared/_myadminlayout.cshtml";
+}
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Sr No</th>
+        <th>Buyer Type </th>
+        <th>CotonName</th>
+        <th>Chest</th>
+        <th>Neck</th>
+        <th>Waist</th>
+        <th>Seat</th>
+        <th>ProductLength</th>
+        <th>Shoulder</th>
+        <th>ArmLength</th>
+
+        <th>Status</th>
+        <th>Bill</th>
+        <th>Delivery Date</th>
+        <th>Action</th>
+
+
+    </tr>
+
+    @{
+        int count = 1;
+    }
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+
+    <tr>
+        <td>@count</td>
+        <td> @Model.Rows[i][2]</td>
+        <td>@Model.Rows[i][3]</td>
+        <td>@Model.Rows[i][4]</td>
+
+        <td> @Model.Rows[i][5]</td>
+        <td>@Model.Rows[i][6]</td>
+
+        <td>@Model.Rows[i][7]</td>
+        <td>@Model.Rows[i][8]</td>
+
+        <td> @Model.Rows[i][9]</td>
+        <td>@Model.Rows[i][10]</td>
+
+        <td>@Model.Rows[i][11]</td>
+
+  
+        <td>@Model.Rows[i][12]</td>
+        <td>@Model.Rows[i][13]</td>
+        @*<td><a href="@Url.Action("Edit","MyAdmin", new { @ProductId =@Model.Rows[i][0]})">Edit</a></td>*@
+        <td><a href="../MyAdmin/CustomOrderConfirm/@(Model.Rows[i][0])">Update</a></td>
+    </tr>
+        count++;
+    }
+
+</table>
+

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "CustomOrderConfirm";
+    Layout = "~/Views/Shared/_myadminlayout.cshtml";
+}
+<h2>ConfirmOrder</h2>
+<div class="confirmbody11">
+    <form action="/MyAdmin/InsertCustomorderConfirm" method="post">
+        <div class="confirminput" style="padding:20px;margin-left:0px;">
+            <input class="input--style-3" type="text" placeholder="Delivery Date" name="date">
+
+        </div>
+        <div class="confirminput" style="padding:20px;margin-left:0px;">
+            <input class="input--style-3" type="text" placeholder="Bill" name="bill">
+            </div>
+            <div class="input-group confirminput" style="padding:20px;margin-left:0px;">
+                <div class="rs-select2 js-select-simple select--no-search">
+                    <select name="OrderStatus">
+                        <option disabled="disabled" selected="selected">Status</option>
+                        <option>Confirm</option>
+                        <option>Pending</option>
+                        <option>Cancel</option>
+                    </select>
+                    <div class="select-dropdown"></div>
+                </div>
+            </div>
+            <button class="btn btn--pill btn--green confirminput" style="padding:20px;margin-left:0px;" type="submit">Submit</button>
+    </form>
+</div>
+

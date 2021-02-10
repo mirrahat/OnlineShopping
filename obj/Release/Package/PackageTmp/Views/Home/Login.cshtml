@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_loginlayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Animation Tutorial</title>
+   
+
+</head>
+<body>
+
+    <div class="mylogincontainer">
+
+        <h1>Fill it out</h1>
+        <p>Please fill out the form To Log in your Account.</p>
+        <form action="../Home/log" method="get">
+            @if (TempData["errormessage"] != null)
+            {
+                <span class="msg" style="color:red;">username Or Password Is incorrect</span>
+
+            }
+            <span class="msg">username please!</span>
+            <input type="text" name="username" placeholder="User Name" class="txtfld" required>
+            <input type="Password" name="Password" placeholder="Password" class="txtfld" required>
+
+            <input type="submit" value="Login" class="mybtn">
+            <p style="margin-top:5px;"><a  href="../Home/forgot" >Forgot Password?</a></p><p style="margin-top: -6%; float: right;"><a href="../Home/Registration">Create an account??</a></p>
+        </form>
+    </div>
+
+
+
+    <script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
+    <script>
+        const mylogincontainer = popmotion.styler(document.querySelector('.mylogincontainer'));
+        const formElements = document.querySelector('.inner');
+        const msgPop = popmotion.styler(document.querySelector('.msg'));
+
+        const myAnim = popmotion.tween({
+            from: {
+                scale: .7,
+                opacity: 0,
+                y: -300
+            },
+            to: {
+                scale: 1,
+                opacity: 1,
+                y: 0
+            },
+            duration: 1000
+        })
+
+        const myAnim2 = popmotion.keyframes({
+            values: [
+                { y: -50, opacity: 0 },
+                { y: -20, opacity: 1 },
+                { y: -20, opacity: 1 },
+                { y: 0, opacity: 0 },
+            ],
+            times: [0, .2, .8, 1],
+            duration: 3000
+        })
+
+        myAnim.start({
+            update: mylogincontainer.set,
+            complete: () => { myAnim2.start(msgPop.set) }
+        });
+
+
+        const stylers = Array
+            .from(formElements.children)
+            .map(popmotion.styler);
+
+        const animations = Array(stylers.length)
+            .fill(popmotion.spring({ from: 100, to: 0 }));
+
+        popmotion.stagger(animations, 1000)
+            .start((v) => v.forEach((x, i) => stylers[i].set({ 'y': x })));
+
+    </script>
+</body>
+</html>
+
+@*<div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+
+                    <form action="../Home/log" method="get">
+
+
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="UserName" name="username" required>
+                        </div>
+
+                        <div class="input-group">
+                            <input class="input--style-3" type="password" placeholder="Password " name="password" required>
+                        </div>
+                        <div class="p-t-10">
+                            <button class="btn btn--pill btn--green" type="submit">Login</button>
+                        </div>
+                        <label>
+                            @*<input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                        <span class="psw" style=" color:white;"> <a style=" color: white;" href="#">Forgot  password?</a></span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>*@
